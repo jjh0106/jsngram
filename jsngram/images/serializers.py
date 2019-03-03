@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from taggit_serializer.serializers import (TagListSerializerField, TaggitSerializer)
 from . import models
 from jsngram.users import models as user_models
 
@@ -54,10 +55,11 @@ class LikeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ImageSerializer(serializers.ModelSerializer):
+class ImageSerializer(TaggitSerializer, serializers.ModelSerializer):
 
     comments = CommentSerializer(many=True)
     creator = FeedUserSerializer()
+    tags = TagListSerializerField()
 
     class Meta:
         model = models.Image
@@ -68,5 +70,19 @@ class ImageSerializer(serializers.ModelSerializer):
             'caption',
             'comments',
             'like_count',
-            'creator'
+            'creator',
+            'tags',
+            'created_at'
         ) 
+
+class InputImageSerializer(serializers.ModelSerializer):
+
+    # file = serializers.FileField(required=False) # 필수 필드가 아니게 설정 하는 방법(문제는 처음 포스팅할 때는 세 가지 모두 필수 입력값이기 때문에 사용x)
+
+    class Meta:
+        model = models.Image
+        fields = (
+            'file',
+            'location',
+            'caption',
+        )

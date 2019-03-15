@@ -5,7 +5,7 @@ import { createBrowserHistory } from 'history';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { i18nState } from 'redux-i18n';
-import users from 'redux/modules/users';
+import user from 'redux/modules/user';
 // import Reactotron from 'ReactotronConfig';
 
 const history = createBrowserHistory();
@@ -20,7 +20,7 @@ if( env === 'development' ){
 }
 
 const reducer = combineReducers({
-    users,
+    user,
     router: connectRouter(history),
     i18nState
 })

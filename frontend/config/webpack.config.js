@@ -456,7 +456,7 @@ module.exports = function(webpackEnv) {
                     ? shouldUseSourceMap
                     : isEnvDevelopment,
                   modules: true,
-                  camelCase: true,
+                  camelCase: "dashes",
                   getLocalIdent: getCSSModuleLocalIdent,
                 },
                 // 'sass-loader'

@@ -30,6 +30,7 @@
     "fs-extra": "7.0.1",
     "history": "^4.7.2",
     "html-webpack-plugin": "4.0.0-alpha.2",
+    "i18n-extract": "^0.6.4",
     "identity-obj-proxy": "3.0.0",
     "jest": "23.6.0",
     "jest-pnp-resolver": "1.0.2",
@@ -46,6 +47,7 @@
     "react-app-polyfill": "^0.2.1",
     "react-dev-utils": "^7.0.3",
     "react-dom": "^16.8.4",
+    "react-ionicons": "^3.0.1",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
     "react-router-redux": "^4.0.8",
@@ -67,6 +69,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "extract": "i18n_extract",
+    "import_translations": "i18n_import --encoding=utf-8",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {

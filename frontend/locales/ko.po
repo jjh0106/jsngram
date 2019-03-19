@@ -1,0 +1,64 @@
+msgid ""
+msgstr ""
+"Language: ko"
+
+#: src/components/Auth/presenter.js
+msgid "Don't have an account?"
+msgstr "계정이 없으십니까?"
+
+#: src/components/Auth/presenter.js
+msgid "Sign up"
+msgstr "회원가입"
+
+#: src/components/Auth/presenter.js
+msgid "Have an account?"
+msgstr "계정이 있으십니까?"
+
+#: src/components/Auth/presenter.js
+msgid "Log in"
+msgstr "로그인"
+
+#: src/components/Auth/presenter.js
+msgid "Get the app"
+msgstr "앱을 다운받으세요."
+
+#: src/components/Footer/index.js
+msgid "About Us"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "Support"
+msgstr "지원"
+
+#: src/components/Footer/index.js
+msgid "Blog"
+msgstr "블로그"
+
+#: src/components/Footer/index.js
+msgid "Press"
+msgstr "언론"
+
+#: src/components/Footer/index.js
+msgid "API"
+msgstr "에이피아이"
+
+#: src/components/Footer/index.js
+msgid "Jobs"
+msgstr "구인"
+
+#: src/components/Footer/index.js
+msgid "Privacy"
+msgstr "정책"
+
+#: src/components/Footer/index.js
+msgid "Terms"
+msgstr "약관"
+
+#: src/components/Footer/index.js
+msgid "Directory"
+msgstr "안내"
+
+#: src/components/Footer/index.js
+msgid "Language"
+msgstr "언어"
+

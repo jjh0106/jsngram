@@ -11,3 +11,7 @@ class UsersAppConfig(AppConfig):
             import users.signals  # noqa F401
         except ImportError:
             pass
+
+       #from .signals import user_signed_up
+
+       

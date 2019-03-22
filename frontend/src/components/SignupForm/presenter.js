@@ -8,7 +8,7 @@ const SignupForm = (props, context) => (
         <h3 className={formStyles.signupHeader}>{context.t('Sign up to see photos and videos from your friends.')}</h3>
         <FacebookLogin 
             appId="299834697373050"
-            autoLoad={true}
+            autoLoad={false}
             fields="name,email,picture"
             callback={props.handleFacebookLogin}
             cssClass={formStyles.facebookLink}
@@ -27,11 +27,11 @@ const SignupForm = (props, context) => (
             />
             <input 
                 type="text" 
-                placeholder={context.t('Full Name')} 
+                placeholder={context.t('Name')} 
                 className={formStyles.textInput}
-                value={props.fullnameValue} 
+                value={props.nameValue} 
                 onChange={props.handleInputChange}
-                name="fullname"
+                name="name"
             />
             <input 
                 type="username" 
@@ -63,7 +63,7 @@ const SignupForm = (props, context) => (
 
 SignupForm.propTypes = {
     emailValue: propTypes.string.isRequired,
-    fullnameValue: propTypes.string.isRequired,
+    nameValue: propTypes.string.isRequired,
     usernameValue: propTypes.string.isRequired,
     passwordValue: propTypes.string.isRequired,
     handleInputChange: propTypes.func.isRequired,

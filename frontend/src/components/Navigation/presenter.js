@@ -1,7 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import LogoInstagram from 'react-ionicons/lib/LogoInstagram';
 import IosCompassOutline from 'react-ionicons/lib/IosCompassOutline';
 import IosHeartOutline from 'react-ionicons/lib/IosHeartOutline';
 import IosPersonOutline from 'react-ionicons/lib/IosPersonOutline';
@@ -11,9 +10,11 @@ const Navigation = (props, context) => (
     <div className={styles.navigation}>
         <div className={styles.inner}>
             <div className={styles.column}>
-                <Link to="/">
-                    <LogoInstagram fontSize="50px" color="black" />
-                </Link>
+                <img
+                    src={require("images/logo.png")}
+                    className={styles.logo}
+                    alt={context.t("Logo")}
+                />
             </div>
             <div className={styles.column}>
                 <input type="text" placeholder={context.t('search')} className={styles.searchInput} />

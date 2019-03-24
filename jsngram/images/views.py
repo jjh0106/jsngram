@@ -233,7 +233,7 @@ class ImageDetail(APIView):
 
         if image is None:
 
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
     
         serializer = serializers.InputImageSerializer(image, data=request.data, partial=True) # partial 세 가지 필드 모두 작성되지 않아도 업데이트 가능하게..
 
@@ -256,7 +256,7 @@ class ImageDetail(APIView):
 
         if image is None:
 
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
         
         image.delete()
 

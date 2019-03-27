@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from taggit.managers import TaggableManager
 from jsngram.users import models as user_models
+from django.contrib.humanize.templatetags.humanize import naturaltime
 
 #이 클래스는 다른 클래스에서 확장해서 사용하고 싶어 만든 것으로, 클래스마다 일일이 created_at, updated_at을 추가하지 않아도 된다.
 @python_2_unicode_compatible
@@ -32,6 +33,10 @@ class Image(TimeStampedModel):
     @property
     def comment_count(self):
         return self.comments.all().count()
+
+    @property
+    def natural_time(self):
+        return naturaltime(self.created_at)
 
     def __str__(self):
       return '{} - {}'.format(self.location, self.caption)

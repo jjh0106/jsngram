@@ -5,6 +5,7 @@ import PhotoActions from 'components/PhotoActions';
 import PhotoComments from 'components/PhotoComments';
 import TimeStamp from 'components/TimeStamp';
 import CommentBox from 'components/CommentBox';
+import UserList from 'components/UserList';
 
 const FeedPhoto = (props, context) => {
     return (
@@ -26,6 +27,7 @@ const FeedPhoto = (props, context) => {
                     number={props.like_count} 
                     isLiked={props.is_liked} 
                     photoId={props.id} 
+                    openLikes={props.openLikes}
                 />
                 <PhotoComments 
                     caption={props.caption}
@@ -35,9 +37,20 @@ const FeedPhoto = (props, context) => {
                 <TimeStamp time={props.natural_time} />
                 <CommentBox photoId={props.id} />
             </div>
+            {props.seeingLikes &&
+                 <UserList 
+                    title={context.t('Likes')} 
+                    closeLikes={props.closeLikes} 
+                    openLikes={props.openLikes} 
+                />
+            }
         </div>
     );
 };
+
+FeedPhoto.contextTypes = {
+    t: propTypes.func.isRequired
+}
 
 FeedPhoto.propTypes = {
     id: propTypes.number.isRequired,
@@ -61,6 +74,9 @@ FeedPhoto.propTypes = {
     ).isRequired,
     natural_time: propTypes.string.isRequired,
     is_liked: propTypes.bool.isRequired,
+    seeingLikes: propTypes.bool.isRequired,
+    closeLikes: propTypes.func.isRequired,
+    openLikes: propTypes.func.isRequired
 };
 
 export default FeedPhoto;

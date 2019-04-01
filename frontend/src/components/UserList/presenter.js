@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import Loading from 'components/Loading';
 import MdClose from 'react-ionicons/lib/MdClose';
+import UserRow from 'components/UserRow';
 import styles from './styles.module.scss';
 
 const UserList = props => {
@@ -14,17 +15,25 @@ const UserList = props => {
                         <MdClose fontSize="20px" color="black" />
                     </span>
                 </header>
-                <div className={styles.content}>{props.loading ? <Loading /> : null}</div>
+                <div className={styles.content}>
+                    {props.loading ? <Loading /> : <RenderUsers list={props.userList} />}
+                </div>
             </div>
         </div>
     )
 };
 
+const RenderUsers = props => props.list.map(user => <UserRow user={user} key={user.id} />);
+
+RenderUsers.propTypes = {
+    list: propTypes.array
+  };
+
 UserList.propTypes = {
     title: propTypes.string.isRequired,
     loading: propTypes.bool.isRequired,
-    users: propTypes.array,
     closeLikes: propTypes.func.isRequired,
+    userList: propTypes.array,
 }
 
 export default UserList;

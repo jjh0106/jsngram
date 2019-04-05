@@ -16,25 +16,19 @@ const UserList = props => {
                     </span>
                 </header>
                 <div className={styles.content}>
-                    {props.loading ? <Loading /> : <RenderUsers list={props.userList} />}
+                    {props.loading ? <Loading /> : <RenderUser list={props.userList} />}
                 </div>
             </div>
         </div>
     )
 };
 
-const RenderUsers = props => props.list.map(user => <UserRow user={user} key={user.id} />);
-
-RenderUsers.propTypes = {
-    list: propTypes.array
-};
+const RenderUser = props => props.list.map(user => <UserRow user={user} key={user.id} />);
 
 UserList.propTypes = {
     title: propTypes.string.isRequired,
     loading: propTypes.bool.isRequired,
     closeLikes: propTypes.func.isRequired,
-    userList: propTypes.array,
-    // users: propTypes.array,
 };
 
 export default UserList;

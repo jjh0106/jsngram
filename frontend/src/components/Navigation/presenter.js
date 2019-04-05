@@ -35,6 +35,9 @@ const Navigation = (props, context) => (
                         <IosPersonOutline fontSize="30px" color="black" />
                     </Link>
                 </div>
+                <div className={styles.navIcon}>
+                    <button type="button" onClick={props.handleLogout}>logout</button>
+                </div>
             </div>
         </div>
     </div>

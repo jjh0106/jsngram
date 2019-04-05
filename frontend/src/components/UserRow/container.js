@@ -1,6 +1,10 @@
-import React from "react";
-import UserRow from "./presenter";
+import React, { Component } from 'react';
+import UserRow from './presenter';
 
-const Container = props => <UserRow {...props} />;
+class Container extends Component {
+    render(){
+        return <UserRow {...this.props} />
+    }
+};
 
 export default Container;

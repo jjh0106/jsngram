@@ -134,13 +134,62 @@ function getPhotoLikes(photoId){
 function followUser(userId){
     return (dispatch, getState) => {
         dispatch(setFollowUser(userId));
+        const { user: { token } } = getState();
+        fetch(`/users/${userId}/follow/`, {
+            method: 'POST',
+            headers: {
+                Authorization: `JWT ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if(response.status === 401){
+                dispatch(logout());
+            } else if(!response.ok) {
+                dispatch(setUnfollowUser(userId));
+            }
+        })
     }
 }
 
 function unfollowUser(userId){
     return (dispatch, getState) => {
         dispatch(setUnfollowUser(userId));
+        const { user: { token } } = getState();
+        fetch(`/users/${userId}/unfollow/`, {
+            method: 'POST',
+            headers: {
+                Authorization: `JWT ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if(response.status === 401){
+                dispatch(logout());
+            } else if(!response.ok) {
+                dispatch(setFollowUser(userId));
+            }
+        })
     }
+}
+
+function getExplore(){
+    return (dispatch, getState) => {
+        const { user: { token } } = getState();
+        fetch(`/users/explore/`, {
+            method: 'GET',
+            headers: {
+                Authorization: `JWT ${token}`,
+            }
+        })
+        .then(response => {
+            if(response.status === 401){
+                dispatch(logout());
+            }
+            return response.json()
+        })
+        .then(json => dispatch(setUserList(json)));
+    };
 }
 
 // initial state
@@ -196,7 +245,7 @@ function applySetUserList(state, action){
 function applyFollowUser(state, action){
     const { userId } = action;
     const { userList } = state;
-    const { updatedUserList } = userList.map(user => {
+    const updatedUserList = userList.map(user => {
         if(user.id === userId){
             return {
                 ...user,
@@ -214,7 +263,7 @@ function applyFollowUser(state, action){
 function applyUnfollowUser(state, action){
     const { userId } = action;
     const { userList } = state;
-    const { updatedUserList } = userList.map(user => {
+    const updatedUserList = userList.map(user => {
         if(user.id === userId){
             return {
                 ...user,
@@ -238,6 +287,7 @@ const actionCreators = {
     getPhotoLikes,
     followUser,
     unfollowUser,
+    getExplore,
 };
 
 export { actionCreators };

@@ -19,7 +19,15 @@ const Navigation = (props, context) => (
                 </Link>
             </div>
             <div className={styles.column}>
-                <input type="text" placeholder={context.t('search')} className={styles.searchInput} />
+                <form onSubmit={props.onSubmit}>
+                    <input 
+                        type="text" 
+                        placeholder={context.t('search')} 
+                        className={styles.searchInput} 
+                        onChange={props.onInputChange}
+                        value={props.value}
+                    />
+                </form>
             </div>
             <div className={styles.column}>
                 <div className={styles.navIcon}>
@@ -45,6 +53,12 @@ const Navigation = (props, context) => (
 
 Navigation.contextTypes = {
     t: propTypes.func.isRequired
+}
+
+Navigation.propTypes = {
+    onSubmit: propTypes.func.isRequired,
+    onInputChange: propTypes.func.isRequired,
+    value: propTypes.string.isRequired,
 }
 
 export default Navigation;
